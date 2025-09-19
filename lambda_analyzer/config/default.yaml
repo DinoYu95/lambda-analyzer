@@ -1,0 +1,68 @@
+# Default configuration for Lambda Analyzer
+analysis:
+  python_version: "3.9"
+  include_patterns:
+    - "*.py"
+  exclude_patterns:
+    - "test_*.py"
+    - "tests/"
+    - "__pycache__/"
+    - "*.pyc"
+
+# Template generation settings
+template:
+  format: sam  # sam, cloudformation, cdk
+  runtime: python3.9
+  timeout: 30
+  memory: 512
+  architecture: x86_64
+
+  # IAM policy settings
+  iam:
+    least_privilege: true
+    resource_constraints: true
+    generate_resource_arns: false
+    optimize: true
+
+  # Security analysis settings
+  security:
+    check_hardcoded_secrets: true
+    check_wildcard_permissions: true
+    check_error_handling: true
+    check_injection_risks: true
+    secret_patterns:
+      - 'AKIA[A-Z0-9]{16}'                        # AWS Access Key
+      - '[A-Za-z0-9+/]{40}'                       # AWS Secret Key (base64)
+      - "password\\s*=\\s*[\"'][^\"']+[\"']"      # Hardcoded passwords
+      - "api_key\\s*=\\s*[\"'][^\"']+[\"']"       # API keys
+
+  # Performance analysis settings
+  performance:
+    check_cold_start: true
+    check_memory_usage: true
+    check_dependencies: true
+    max_function_size_mb: 50
+
+  # Output settings
+  output:
+    format: console  # console, json, yaml
+    include_confidence: true
+    include_recommendations: true
+    include_security_issues: true
+    verbose: false
+
+  # Resource defaults (used when user doesn't specify)
+  resource_defaults:
+    dynamodb:
+      billing_mode: PAY_PER_REQUEST
+      deletion_protection: false
+      point_in_time_recovery: true
+    s3:
+      versioning: true
+      encryption: true
+      public_access_block: true
+    sns:
+      encryption: true
+    sqs:
+      encryption: true
+      message_retention_period: 1209600  # 14 days
