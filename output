@@ -1,0 +1,7 @@
+Available resultsets
+(1) pyscript.PyScriptClassifier '-args bivariate_split=False -batch 100 -cmd python -script D:\\COMPX521-Machine-Learning\\CodeForAssignment1\\python\\WekaWrapperClassificationTree.py' 2846535265976949760
+(2) pyscript.PyScriptClassifier '-args bivariate_split=True -batch 100 -cmd python -script D:\\COMPX521-Machine-Learning\\CodeForAssignment1\\python\\WekaWrapperClassificationTree.py' 2846535265976949760
+(3) pyscript.PyScriptClassifier '-args bivariate_split=True;enable_evaluate_importance_of_single_attribute=True;top_k_features=15 -batch 100 -cmd python -script D:\\COMPX521-Machine-Learning\\CodeForAssignment1\\python\\WekaWrapperClassificationTree.py' 2846535265976949760
+
+
+

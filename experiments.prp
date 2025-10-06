@@ -1,0 +1,73 @@
+traceFile=./trace.log
+traceLevel=2
+!traceConsole=1
+!
+! Allowed min ratio of empty/used rows in indexes as a percentage.
+! Default is 5. Setting this too high causes frequent re-indexing
+! operations. Setting too low can result in very slow index
+! construction.
+!
+indexLoad=5
+!
+! Various paths and file names needed to locate database files.
+!
+relativeToProperties=1
+tablePath=./tables
+indexPath=./index
+tmpPath=./tmp
+systemPath=./system
+syntaxPath=../Classes/db/sqlsyntax.txt
+!
+! Specify whether to cache by number of rows or by a percentage.
+! This can be overridden when the table is created.
+! Default: CACHE_ROWS
+!
+!cacheCondition=CACHE_PERCENT
+cacheCondition=CACHE_ROWS
+!
+! Specify number of rows or percentage to cache
+! This can be overridden when the table is created.
+! Default: 256 for rows, 10 for percent
+!
+!cacheAmount=30
+cacheAmount=512
+!
+! Initial number of rows in cache
+! Default: 256
+!
+!initialCacheSize=64
+initialCacheSize=64
+!
+! Amount to increase cache when full
+! Default: 256
+!
+!cacheExpansion=8
+cacheExpansion=256
+!
+! Number of cache misses to included in stats
+! Default: 100
+!
+missesInCacheStats=100
+!
+! Percentage of alternate cache hit improvements required to 
+! force a cache reset
+! Default: 10
+!
+cacheResetPercent=10
+!
+! Number of rows to read in a single IO and cache.
+! Default: 20
+!
+!rowCacheSize=4
+rowCacheSize=32
+!
+! Number of rows in the recently used row cache (ass opposed to most popular rows cache)
+! Default: 32
+!
+recentRows=4
+!
+! Caching algorithm and amount for results sets
+!
+resultsSetCache=CACHE_ROWS
+resultsSetCacheAmount=256
+recoveryPolicy=1
